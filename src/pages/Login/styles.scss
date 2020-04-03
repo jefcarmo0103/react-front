@@ -30,6 +30,23 @@
             padding: 20px;
             width: 100%;
             max-width: 500px;
+
+            .titulo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ff0000;
+                margin-bottom: 40px;
+
+                img {
+                    height: 40px;
+                }
+
+                h1 {
+                    font-size: 25px;
+                    margin: 0 15px 0 0;
+                }
+            }
             
             .row {
                 width: 100%;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 
 import logoBranco from '../../assets/logoComunaBranco.png';
+import logo from '../../assets/logoComuna.png';
 
 export default function Login() {
 
@@ -19,6 +20,12 @@ export default function Login() {
             <div className="col s12 m8 ladoDireito">
                 <form>
                     <div className="row">
+                        <div className="col s12 titulo">
+                            <h1>FAÇA SEU LOGIN</h1>
+                            <img src={logo} alt="Comunidade da Graça" />
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="input-field col s12">
                             <i class="material-icons prefix">mail_outline</i>
                             <input type="email" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
@@ -30,7 +37,7 @@ export default function Login() {
                     </div>
                     <div className="row">
                         <button className="col s4 offset-s4" disabled={!email || !senha}>
-                            LOGIN
+                            ENTRAR
                         </button>
                     </div>
                 </form>
