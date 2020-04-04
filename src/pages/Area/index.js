@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
 export default function Area() {
-//teste
+
     const [areas, setAreas] = useState([]);
 
     const history = useHistory();
