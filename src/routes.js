@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Main from './pages/Main';
+import Area from './pages/Area';
 import Login from './pages/Login';
 
 export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/main" component={Main} />
                 <Route path="/" exact component={Login} />
+                <Route path="/areas" component={Area} />
                 <Route path="/login" component={Login} />
             </Switch>
         </BrowserRouter>

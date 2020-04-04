@@ -1,13 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.scss';
+
+import api from '../../services/api';
 
 import logoBranco from '../../assets/logoComunaBranco.png';
 import logo from '../../assets/logoComuna.png';
 
 export default function Login() {
-//teste
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const history = useHistory();
+
+    useEffect(() => {
+        if (localStorage.getItem('userId')) {
+            history.push('/areas');
+        }
+        // eslint-disable-next-line
+    }, [])
+
+    async function handleLogin(e) {
+        e.preventDefault();
+
+        if (!email || !senha) {
+            return;
+        }
+
+        try {
+            const response = await api.post('login', {email, senha});
+            localStorage.setItem('userId', response.data.id);
+            localStorage.setItem('userName', response.data.nome);
+            localStorage.setItem('userLastname', response.data.sobrenome);
+            localStorage.setItem('userNick', response.data.apelido);
+            history.push('/areas');
+        } catch (e) {
+            alert('Email e/ou senha inválidos');
+        }
+    };
 
     return (
         <div className="login-container row">
@@ -18,7 +48,7 @@ export default function Login() {
                 <p>SBC</p>
             </div>
             <div className="col s12 m8 ladoDireito">
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="row">
                         <div className="col s12 titulo">
                             <h1>FAÇA SEU LOGIN</h1>
@@ -27,16 +57,16 @@ export default function Login() {
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <i class="material-icons prefix">mail_outline</i>
+                            <i className="material-icons prefix">mail_outline</i>
                             <input type="email" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
                         </div>
                         <div className="input-field col s12">
-                            <i class="material-icons prefix">lock_outline</i>
+                            <i className="material-icons prefix">lock_outline</i>
                             <input type="password" id="senhaInput" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
                         </div>
                     </div>
                     <div className="row">
-                        <button className="col s4 offset-s4" disabled={!email || !senha}>
+                        <button type="submit" className="col s4 offset-s4 buttonSubmit" disabled={!email || !senha}>
                             ENTRAR
                         </button>
                     </div>
