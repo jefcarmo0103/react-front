@@ -4,12 +4,14 @@ import './styles.scss';
 
 import api from '../../services/api';
 
+import loaderImg from '../../assets/loader.svg';
 import logoBranco from '../../assets/logoComunaBranco.png';
 import logo from '../../assets/logoComuna.png';
 
 export default function Login() {
 
     const [email, setEmail] = useState('');
+    const [loader, setLoader] = useState(false);
     const [senha, setSenha] = useState('');
     const history = useHistory();
 
@@ -27,15 +29,20 @@ export default function Login() {
             return;
         }
 
+        setLoader(true);
+
         try {
             const response = await api.post('login', {email, senha});
-            localStorage.setItem('userId', response.data.id);
-            localStorage.setItem('userName', response.data.nome);
-            localStorage.setItem('userLastname', response.data.sobrenome);
-            localStorage.setItem('userNick', response.data.apelido);
+            localStorage.setItem('userId', response.data.pessoa.id);
+            localStorage.setItem('userName', response.data.pessoa.nome);
+            localStorage.setItem('userLastname', response.data.pessoa.sobrenome);
+            localStorage.setItem('userNick', response.data.pessoa.apelido);
+            localStorage.setItem('funcao', response.data.funcao.nivelAcesso);
+            setLoader(false);
             history.push('/areas');
         } catch (e) {
             alert('Email e/ou senha inválidos');
+            setLoader(false);
         }
     };
 
@@ -48,6 +55,12 @@ export default function Login() {
                 <p>SBC</p>
             </div>
             <div className="col s12 m8 ladoDireito">
+                {loader 
+                    ? <div className="loaderDiv">
+                        <img src={loaderImg} alt="Loading..." /> 
+                    </div>
+                    : null
+                }
                 <form onSubmit={handleLogin}>
                     <div className="row">
                         <div className="col s12 titulo">

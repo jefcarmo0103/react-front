@@ -26,6 +26,16 @@
         align-items: center;
         justify-content: center;
 
+        .loaderDiv {
+            position: absolute;
+            z-index: 1;
+            padding: 130px;
+        }
+
+        .loaderDiv + form {
+            opacity: 0.5;
+        }
+
         form {
             padding: 20px;
             width: 100%;
