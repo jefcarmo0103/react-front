@@ -6,7 +6,7 @@ import api from '../../services/api';
 
 import loaderImg from '../../assets/loader.svg';
 import logoBranco from '../../assets/logoComunaBranco.png';
-import logo from '../../assets/logoComuna.png';
+//import logo from '../../assets/logoComuna.png';
 
 export default function Login() {
 
@@ -48,40 +48,37 @@ export default function Login() {
 
     return (
         <div className="login-container row">
-            <div className="col m4 hide-on-small-only ladoEsquerdo">
-                <img src={logoBranco} alt="Comunidade da Graça" />
-                <p>Bem vindo!</p>
-                <p>Comunidade da Graça</p>
-                <p>SBC</p>
-            </div>
-            <div className="col s12 m8 ladoDireito">
+            <div className="col s12 ladoDireito">
                 {loader 
                     ? <div className="loaderDiv">
                         <img src={loaderImg} alt="Loading..." /> 
                     </div>
                     : null
                 }
+                <img src={logoBranco} alt="Comunidade da Graça" />
                 <form onSubmit={handleLogin}>
                     <div className="row">
                         <div className="col s12 titulo">
-                            <h1>FAÇA SEU LOGIN</h1>
-                            <img src={logo} alt="Comunidade da Graça" />
+                            Login
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <i className="material-icons prefix">mail_outline</i>
-                            <input type="email" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
+                            <input type="email" className="validate" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
+                            <label for="first_name">E-mail</label>
                         </div>
                         <div className="input-field col s12">
-                            <i className="material-icons prefix">lock_outline</i>
-                            <input type="password" id="senhaInput" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
+                            <input type="password" className="validate" id="senhaInput" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
+                            <label for="first_name">Senha</label>
                         </div>
                     </div>
                     <div className="row">
                         <button type="submit" className="col s4 offset-s4 buttonSubmit" disabled={!email || !senha}>
                             ENTRAR
                         </button>
+                    </div>
+                    <div className="linhaLink">
+                        <a href="/cadastro">Quero me cadastrar</a>
                     </div>
                 </form>
             </div>
