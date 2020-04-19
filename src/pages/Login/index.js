@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import './styles.scss';
 
 import api from '../../services/api';
 
 import loaderImg from '../../assets/loader.svg';
 import logoBranco from '../../assets/logoComunaBranco.png';
-//import logo from '../../assets/logoComuna.png';
 
 export default function Login() {
 
@@ -58,11 +58,6 @@ export default function Login() {
                 <img src={logoBranco} alt="Comunidade da Graça" />
                 <form onSubmit={handleLogin}>
                     <div className="row">
-                        <div className="col s12 titulo">
-                            Login
-                        </div>
-                    </div>
-                    <div className="row">
                         <div className="input-field col s12">
                             <input type="email" className="validate" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
                             <label for="first_name">E-mail</label>
@@ -73,8 +68,8 @@ export default function Login() {
                         </div>
                     </div>
                     <div className="row">
-                        <button type="submit" className="col s4 offset-s4 buttonSubmit" disabled={!email || !senha}>
-                            ENTRAR
+                        <button type="submit" className="col s12 buttonSubmit" disabled={!email || !senha}>
+                            <FiArrowRight size={24} color="#fff" />
                         </button>
                     </div>
                     <div className="linhaLink">
