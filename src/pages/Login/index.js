@@ -57,14 +57,15 @@ export default function Login() {
                 }
                 <img src={logoBranco} alt="Comunidade da Graça" />
                 <form onSubmit={handleLogin}>
+                    <p>Login</p>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input type="email" className="validate" id="emailInput" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
-                            <label for="first_name">E-mail</label>
+                            <input type="email" className="validate" id="emailInput" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
+                            <label for="emailInput">E-mail</label>
                         </div>
                         <div className="input-field col s12">
-                            <input type="password" className="validate" id="senhaInput" placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
-                            <label for="first_name">Senha</label>
+                            <input type="password" className="validate" id="senhaInput" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
+                            <label for="senhaInput">Senha</label>
                         </div>
                     </div>
                     <div className="row">

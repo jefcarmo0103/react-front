@@ -24,7 +24,6 @@ export default function Area() {
         api.get('areas')
         .then(response => {
             setAreas(response.data);
-            console.log(response.data)
         })
     }, [userId]);
 
@@ -48,17 +47,8 @@ export default function Area() {
                 .sort(function(a,b) { return a.nomeArea < b.nomeArea ? -1 : a.nomeArea > b.nomeArea ? 1 : 0 })
                 .map(area => (
                     <li key={area.idArea} className={area.corArea}>
-                        <strong>NOME:</strong>
-                        <p>{area.nomeArea}</p>
-
-                        <strong>STATUS:</strong>
-                        <p>{area.statusArea}</p>
-
-                        <strong>PERTENCE A IGREJA:</strong>
-                        <p>{area.idIgreja}</p>
-
-                        <strong>DATA INÍCIO:</strong>
-                        <p>{Intl.DateTimeFormat('pt-BR').format(new Date (area.inicioArea))}</p>
+                        <strong>{area.nomeArea}</strong>
+                        <div>.</div>
                     </li>
                 ))}
             </ul>
