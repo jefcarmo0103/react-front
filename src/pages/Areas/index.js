@@ -10,22 +10,22 @@ export default function Area() {
 
     const history = useHistory();
 
-    const userId = localStorage.getItem('userId');
-    const userName = localStorage.getItem('userName');
+    const accessToken = localStorage.getItem('@ComunaSBC:accessToken');
 
     useEffect(() => {
-        if (!localStorage.getItem('userId')) {
-            history.push('/');
-        }
-        // eslint-disable-next-line
-    }, []);
-
-    useEffect(() => {
-        api.get('areas')
-        .then(response => {
-            setAreas(response.data);
+        api.get('/menu', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
         })
-    }, [userId]);
+        .then((res) => {
+            setAreas(res.data);
+        })
+        .catch((err) => {
+            alert('Necessário fazer login novamente');
+            history.push('/');
+        });
+    }, [accessToken, history]);
 
     function handleLogout() {
         localStorage.clear();
@@ -35,8 +35,6 @@ export default function Area() {
     return (
         <div className="area-container">
             <header>
-                <span>Bem vindo, {userName}</span>
-
                 <button type="button" onClick={() => handleLogout()}>
                     Sair
                 </button>

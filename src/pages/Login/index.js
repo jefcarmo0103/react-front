@@ -19,8 +19,7 @@ export default function Login() {
         if (localStorage.getItem('userId')) {
             history.push('/areas');
         }
-        // eslint-disable-next-line
-    }, [])
+    }, [history])
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -33,11 +32,7 @@ export default function Login() {
 
         try {
             const response = await api.post('login', {email, senha});
-            localStorage.setItem('userId', response.data.pessoa.id);
-            localStorage.setItem('userName', response.data.pessoa.nome);
-            localStorage.setItem('userLastname', response.data.pessoa.sobrenome);
-            localStorage.setItem('userNick', response.data.pessoa.apelido);
-            localStorage.setItem('funcao', response.data.funcao.nivelAcesso);
+            localStorage.setItem('@ComunaSBC:accessToken', response.data.accessToken);
             setLoader(false);
             history.push('/areas');
         } catch (e) {
@@ -61,11 +56,11 @@ export default function Login() {
                     <div className="row">
                         <div className="input-field col s12">
                             <input type="email" className="validate" id="emailInput" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
-                            <label for="emailInput">E-mail</label>
+                            <label htmlFor="emailInput">E-mail</label>
                         </div>
                         <div className="input-field col s12">
                             <input type="password" className="validate" id="senhaInput" value={senha} onChange={e => setSenha(e.target.value)} minLength="3" />
-                            <label for="senhaInput">Senha</label>
+                            <label htmlFor="senhaInput">Senha</label>
                         </div>
                     </div>
                     <div className="row">
