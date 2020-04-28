@@ -15,7 +15,6 @@ export default function Area() {
     const userSalvo = localStorage.getItem('@ComunaSBC:user');
 
     useEffect(() => {
-        console.log(`Bearer ${token}`)
         api.get('/menu', {
             headers: {
                 Authorization: `Bearer ${token}`
