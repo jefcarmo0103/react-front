@@ -11,6 +11,7 @@ export default function Area() {
     const history = useHistory();
 
     const accessToken = localStorage.getItem('@ComunaSBC:accessToken');
+    const userSalvo = localStorage.getItem('@ComunaSBC:user');
 
     useEffect(() => {
         api.get('/menu', {
@@ -35,6 +36,8 @@ export default function Area() {
     return (
         <div className="area-container">
             <header>
+                <span>Bem vindo, {userSalvo}</span>
+
                 <button type="button" onClick={() => handleLogout()}>
                     Sair
                 </button>

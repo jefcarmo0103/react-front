@@ -16,7 +16,7 @@ export default function Login() {
     const history = useHistory();
 
     useEffect(() => {
-        if (localStorage.getItem('userId')) {
+        if (localStorage.getItem('@ComunaSBC:accessToken')) {
             history.push('/areas');
         }
     }, [history])
@@ -30,15 +30,15 @@ export default function Login() {
 
         setLoader(true);
 
-        try {
-            const response = await api.post('login', {email, senha});
-            localStorage.setItem('@ComunaSBC:accessToken', response.data.accessToken);
+        api.post('login', {email, senha}).then((res) => {
+            localStorage.setItem('@ComunaSBC:accessToken', res.data.token.accessToken);
+            localStorage.setItem('@ComunaSBC:user', res.data.user);
             setLoader(false);
             history.push('/areas');
-        } catch (e) {
+        }).catch((err) => {
             alert('Email e/ou senha inválidos');
             setLoader(false);
-        }
+        })
     };
 
     return (
