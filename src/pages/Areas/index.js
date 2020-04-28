@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './styles.scss';
+import StoreContext from '../../hooks/Context';
 import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -10,13 +11,14 @@ export default function Area() {
 
     const history = useHistory();
 
-    const accessToken = localStorage.getItem('@ComunaSBC:accessToken');
+    const { token } = useContext(StoreContext);
     const userSalvo = localStorage.getItem('@ComunaSBC:user');
 
     useEffect(() => {
+        console.log(`Bearer ${token}`)
         api.get('/menu', {
             headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${token}`
             }
         })
         .then((res) => {
@@ -24,9 +26,9 @@ export default function Area() {
         })
         .catch((err) => {
             alert('Necessário fazer login novamente');
-            history.push('/');
+            return history.push('/');
         });
-    }, [accessToken, history]);
+    }, [token, history]);
 
     function handleLogout() {
         localStorage.clear();
