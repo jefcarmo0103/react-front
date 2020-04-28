@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import StoreContext from '../../hooks/Context';
+import { useToast } from '../../hooks/toast';
 import { FiArrowRight } from 'react-icons/fi';
 import './styles.scss';
 
@@ -15,10 +16,10 @@ function initialValues() {
 
 const Login = () => {
     const [values, setValues] = useState(initialValues);
-    const [error, setError] = useState(null);
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const { setToken } = useContext(StoreContext);
+    const { addToast } = useToast();
 
     useState(() => {
         if (localStorage.getItem('@ComunaSBC:accessToken')) {
@@ -45,7 +46,11 @@ const Login = () => {
             return history.push('/areas');
         }).catch((err) => {
             setLoader(false);
-            setError('Email e/ou senha inválidos');
+            addToast({
+                type: 'error',
+                title: 'Erro na autenticação',
+                description: 'Ocorreu um erro ao fazer login, cheque as credenciais.'
+            })
         })
     };
 
@@ -72,9 +77,6 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="row">
-                        {error && (
-                            <div className="user-login__error">{error}</div>
-                        )}
                         <button type="submit" className="col s12 buttonSubmit" disabled={values.email === '' || values.password === ''}>
                             <FiArrowRight size={24} color="#fff" />
                         </button>
