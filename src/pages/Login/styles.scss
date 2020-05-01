@@ -1,8 +1,8 @@
-.login-container {
+ .login-container {
     width: 100%;
-    height: 250px;
+    height: 450px;
     margin: 0;
-    background: transparent linear-gradient(180deg, #FE4E50 0%, #FE6E6E 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #F41C32 0%, #FE6E6E 100%) 0% 0% no-repeat padding-box;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 
@@ -11,7 +11,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-top: 50px;
+        padding-top: 20px;
 
         img {
             height: 110px;
@@ -29,7 +29,7 @@
         }
 
         form {
-            padding: 20px;
+            padding: 20px 40px;
             width: 100%;
             max-width: 400px;
             background-color: #fff;
@@ -59,25 +59,41 @@
                 margin-left: 0;
             }
 
-            .buttonSubmit {
-                width: 45px;
-                height: 45px;
-                float: right;
-                margin-right: 10px;
-                box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.4)
-            }
-
-            .linhaLink {
+            .divBtns {
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: -10px 0 0;
+                flex-direction: column;
+
+                button {
+                    max-width: fit-content;
+                    padding: 0 40px;
+                }
+
+                div {
+                    border-bottom: 1px solid #DBDFE1;
+                    margin: 5px 0 10px;
+                    padding: 0 100px;
+
+                    p {
+                        color: #838383;
+                        font-size: 12px;
+                    }
+                }
+
+                .vermelho {
+                    font-size: 24px;
+                }
+
+                .vinho {
+                    font-size: 12px;
+                }
 
                 a {
                     color: #ff0000;
-                    font-size: 10px;
-
+                    font-size: 12px;
+                    margin-top: 20px;
                 }
             }
         } 

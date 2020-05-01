@@ -1,37 +1,36 @@
-import React, { useState, useEffect, useContext } from 'react';
-import './styles.scss';
-import StoreContext from '../../hooks/Context';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import "./styles.scss";
+import StoreContext from "../../hooks/Context";
+import { useHistory } from "react-router-dom";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
 export default function Area() {
-
     const [areas, setAreas] = useState([]);
 
     const history = useHistory();
 
     const { token } = useContext(StoreContext);
-    const userSalvo = localStorage.getItem('@ComunaSBC:user');
+    const userSalvo = localStorage.getItem("@ComunaSBC:user");
 
     useEffect(() => {
-        api.get('/menu', {
+        api.get("/menu", {
             headers: {
-                Authorization: `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         })
-        .then((res) => {
-            setAreas(res.data);
-        })
-        .catch((err) => {
-            alert('Necessário fazer login novamente');
-            return history.push('/');
-        });
+            .then((res) => {
+                setAreas(res.data);
+            })
+            .catch((err) => {
+                alert("Necessário fazer login novamente");
+                return history.push("/");
+            });
     }, [token, history]);
 
     function handleLogout() {
         localStorage.clear();
-        history.push('/');
+        history.push("/");
     }
 
     return (
@@ -46,15 +45,20 @@ export default function Area() {
 
             <ul>
                 {areas
-                .sort(function(a,b) { return a.nomeArea < b.nomeArea ? -1 : a.nomeArea > b.nomeArea ? 1 : 0 })
-                .map(area => (
-                    <li key={area.idArea} className={area.corArea}>
-                        <strong>{area.nomeArea}</strong>
-                        <div>.</div>
-                    </li>
-                ))}
+                    .sort(function (a, b) {
+                        return a.nomeArea < b.nomeArea
+                            ? -1
+                            : a.nomeArea > b.nomeArea
+                            ? 1
+                            : 0;
+                    })
+                    .map((area) => (
+                        <li key={area.idArea} className={area.corArea}>
+                            <strong>{area.nomeArea}</strong>
+                            <div>.</div>
+                        </li>
+                    ))}
             </ul>
         </div>
-    )
-
-}
+    );
+};

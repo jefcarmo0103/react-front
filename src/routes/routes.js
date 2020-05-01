@@ -6,6 +6,7 @@ import RoutesPrivate from './Private';
 
 import Area from '../pages/Areas';
 import Login from '../pages/Login';
+import Cadastro from '../pages/Cadastro';
 
 const Routes = () => (
     <Router>
@@ -13,6 +14,7 @@ const Routes = () => (
             <ToastProvider>
                 <Switch>
                     <Route path="/" exact component={Login} />
+                    <Route path="/cadastro" component={Cadastro} />
                     <RoutesPrivate path="/areas" component={Area} />
                 </Switch>
             </ToastProvider>
