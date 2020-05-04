@@ -23,6 +23,10 @@ body, input, button {
 
 button {
     cursor: pointer;
+
+    &:disabled {
+        cursor: default;
+    }
 }
 
 a:hover {
@@ -47,7 +51,6 @@ a:hover {
 
     &:disabled {
         opacity: 0.5;
-        cursor: default;
     }
 
     &.vermelho {
@@ -56,5 +59,56 @@ a:hover {
 
     &.vinho {
         background-color: #8D0000;
+    }
+}
+
+.divInputComErro {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+
+    input {
+        flex: 1;
+        background: transparent;
+    }
+
+    div {
+        margin-left: 20px;
+        position: relative;
+        height: 20px;
+
+        p {
+            width: 170px;
+            background: #c53030;
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.4s;
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            visibility: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                border-style: solid;
+                border-color: #c53030 transparent;
+                border-width: 6px 6px 0 6px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 100%;
+            }
+        }
+
+        &:hover p {
+            opacity: 1;
+            visibility: visible;
+        }
     }
 }

@@ -98,23 +98,13 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="divBtns">
-                        <button
-                            type="submit"
-                            className="Button vermelho"
-                            disabled={
-                                values.email === "" || values.password === ""
-                            }
-                        >
+                        <button type="submit" className="Button vermelho" >
                             ENTRAR
                         </button>
                         <div>
                             <p>ou</p>
                         </div>
-                        <button
-                            type="submit"
-                            className="Button vinho"
-                            onClick={handleCadastrar}
-                        >
+                        <button type="submit" className="Button vinho" onClick={handleCadastrar} >
                             CRIAR CONTA
                         </button>
                         <a href="/">Esqueci minha senha</a>
