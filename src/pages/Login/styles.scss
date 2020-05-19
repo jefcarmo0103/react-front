@@ -2,7 +2,7 @@
     width: 100%;
     height: 450px;
     margin: 0;
-    background: transparent linear-gradient(180deg, #F41C32 0%, #FE6E6E 100%) 0% 0% no-repeat padding-box;
+    background: #C42C2C;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 
@@ -53,10 +53,14 @@
                 margin: 20px 0;
                 font-size: 26px;
             }
-            
+
             .row {
                 width: 100%;
                 margin-left: 0;
+
+                .divInputComErro + .divInputComErro {
+                    margin-top: 1rem;
+                }
             }
 
             .divBtns {
@@ -73,17 +77,12 @@
 
                 div {
                     border-bottom: 1px solid #DBDFE1;
-                    margin: 5px 0 10px;
+                    margin: 13px 0;
                     padding: 0 100px;
-
-                    p {
-                        color: #838383;
-                        font-size: 12px;
-                    }
                 }
 
                 .vermelho {
-                    font-size: 24px;
+                    font-size: 20px;
                 }
 
                 .vinho {
@@ -96,6 +95,6 @@
                     margin-top: 20px;
                 }
             }
-        } 
+        }
     }
 }

@@ -151,9 +151,9 @@ const Cadastro = () => {
                     placeholder="email"
                     onChange={handleOnChange}
                 />
-                {errors.apelido !== undefined && (
+                {errors.email !== undefined && (
                     <div>
-                        <p>{errors.apelido}</p>
+                        <p>{errors.email}</p>
                         <FiAlertCircle color="#c53030" size={20} />
                     </div>
                 )}

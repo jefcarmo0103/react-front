@@ -73,38 +73,40 @@ const Login = () => {
                 <form onSubmit={handleOnSubmit}>
                     <p>Login</p>
                     <div className="row">
-                        <div className="input-field col s12">
+                        <div className="divInputComErro">
                             <input
                                 type="email"
                                 className="validate"
+                                placeholder="E-mail"
                                 id="emailInput"
                                 value={values.email}
                                 name="email"
                                 onChange={handleOnChange}
                                 autoFocus
                             />
-                            <label htmlFor="emailInput">E-mail</label>
                         </div>
-                        <div className="input-field col s12">
+                        <div className="divInputComErro">
                             <input
                                 type="password"
                                 className="validate"
+                                placeholder="Senha"
                                 id="senhaInput"
                                 value={values.password}
                                 name="password"
                                 onChange={handleOnChange}
                             />
-                            <label htmlFor="senhaInput">Senha</label>
                         </div>
                     </div>
                     <div className="divBtns">
-                        <button type="submit" className="Button vermelho" >
+                        <button type="submit" className="Button vermelho">
                             ENTRAR
                         </button>
-                        <div>
-                            <p>ou</p>
-                        </div>
-                        <button type="submit" className="Button vinho" onClick={handleCadastrar} >
+                        <div></div>
+                        <button
+                            type="submit"
+                            className="Button vinho"
+                            onClick={handleCadastrar}
+                        >
                             CRIAR CONTA
                         </button>
                         <a href="/">Esqueci minha senha</a>

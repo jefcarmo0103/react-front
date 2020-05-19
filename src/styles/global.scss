@@ -66,16 +66,23 @@ a:hover {
     width: 100%;
     display: flex;
     align-items: flex-end;
+    border: 1px solid #C2C9CC;
 
     input {
         flex: 1;
         background: transparent;
+        border-bottom: 0 !important;
+        padding: 0 15px !important;
     }
 
     div {
-        margin-left: 20px;
         position: relative;
-        height: 20px;
+        height: 45px;
+        width: 45px;
+        margin-left: -15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         p {
             width: 170px;
@@ -90,7 +97,7 @@ a:hover {
             position: absolute;
             bottom: calc(100% + 12px);
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(15px);
             text-align: center;
             visibility: hidden;
 
