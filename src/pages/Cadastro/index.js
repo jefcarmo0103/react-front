@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import { FiAlertCircle } from "react-icons/fi";
+import Topbar from '../../components/Topbar';
 
 import getValidationErrors from "../../utils/getValidationsErrors";
 
@@ -97,112 +98,115 @@ const Cadastro = () => {
     );
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="divInputComErro">
-                <input
-                    type="text"
-                    name="nome"
-                    value={values.nome}
-                    placeholder="nome"
-                    onChange={handleOnChange}
-                />
-                {errors.nome !== undefined && (
-                    <div>
-                        <p>{errors.nome}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <div className="divInputComErro">
-                <input
-                    type="text"
-                    name="sobrenome"
-                    value={values.sobrenome}
-                    placeholder="sobrenome"
-                    onChange={handleOnChange}
-                />
-                {errors.sobrenome !== undefined && (
-                    <div>
-                        <p>{errors.sobrenome}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <div className="divInputComErro">
-                <input
-                    type="text"
-                    name="apelido"
-                    value={values.apelido}
-                    placeholder="apelido"
-                    onChange={handleOnChange}
-                />
-                {errors.apelido !== undefined && (
-                    <div>
-                        <p>{errors.apelido}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <div className="divInputComErro">
-                <input
-                    type="email"
-                    name="email"
-                    value={values.email}
-                    placeholder="email"
-                    onChange={handleOnChange}
-                />
-                {errors.email !== undefined && (
-                    <div>
-                        <p>{errors.email}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <div className="divInputComErro">
-                <input
-                    type="password"
-                    name="senha"
-                    value={values.senha}
-                    placeholder="senha"
-                    onChange={handleOnChange}
-                />
-                {errors.senha !== undefined && (
-                    <div>
-                        <p>{errors.senha}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <div className="divInputComErro">
-                <input
-                    type="password"
-                    name="confirmarSenha"
-                    value={values.confirmarSenha}
-                    placeholder="confirmarSenha"
-                    onChange={handleOnChange}
-                />
-                {errors.confirmarSenha !== undefined && (
-                    <div>
-                        <p>{errors.confirmarSenha}</p>
-                        <FiAlertCircle color="#c53030" size={20} />
-                    </div>
-                )}
-            </div>
-            <button
-                type="submit"
-                className="Button vermelho"
-                disabled={
-                    values.nome === "" ||
-                    values.sobrenome === "" ||
-                    values.apelido === "" ||
-                    values.email === "" ||
-                    values.senha === "" ||
-                    values.confirmarSenha === ""
-                }
-            >
-                Cadastrar
-            </button>
-        </form>
+        <div className="cadastro-component">
+            <Topbar></Topbar>
+            <form onSubmit={handleSubmit}>
+                <div className="divInputComErro">
+                    <input
+                        type="text"
+                        name="nome"
+                        value={values.nome}
+                        placeholder="nome"
+                        onChange={handleOnChange}
+                    />
+                    {errors.nome !== undefined && (
+                        <div>
+                            <p>{errors.nome}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <div className="divInputComErro">
+                    <input
+                        type="text"
+                        name="sobrenome"
+                        value={values.sobrenome}
+                        placeholder="sobrenome"
+                        onChange={handleOnChange}
+                    />
+                    {errors.sobrenome !== undefined && (
+                        <div>
+                            <p>{errors.sobrenome}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <div className="divInputComErro">
+                    <input
+                        type="text"
+                        name="apelido"
+                        value={values.apelido}
+                        placeholder="apelido"
+                        onChange={handleOnChange}
+                    />
+                    {errors.apelido !== undefined && (
+                        <div>
+                            <p>{errors.apelido}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <div className="divInputComErro">
+                    <input
+                        type="email"
+                        name="email"
+                        value={values.email}
+                        placeholder="email"
+                        onChange={handleOnChange}
+                    />
+                    {errors.email !== undefined && (
+                        <div>
+                            <p>{errors.email}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <div className="divInputComErro">
+                    <input
+                        type="password"
+                        name="senha"
+                        value={values.senha}
+                        placeholder="senha"
+                        onChange={handleOnChange}
+                    />
+                    {errors.senha !== undefined && (
+                        <div>
+                            <p>{errors.senha}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <div className="divInputComErro">
+                    <input
+                        type="password"
+                        name="confirmarSenha"
+                        value={values.confirmarSenha}
+                        placeholder="confirmarSenha"
+                        onChange={handleOnChange}
+                    />
+                    {errors.confirmarSenha !== undefined && (
+                        <div>
+                            <p>{errors.confirmarSenha}</p>
+                            <FiAlertCircle color="#c53030" size={20} />
+                        </div>
+                    )}
+                </div>
+                <button
+                    type="submit"
+                    className="Button vermelho"
+                    disabled={
+                        values.nome === "" ||
+                        values.sobrenome === "" ||
+                        values.apelido === "" ||
+                        values.email === "" ||
+                        values.senha === "" ||
+                        values.confirmarSenha === ""
+                    }
+                >
+                    Cadastrar
+                </button>
+            </form>
+        </div>
     );
 };
 
