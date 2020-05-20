@@ -2,9 +2,11 @@ import React, { useCallback, useState } from "react";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import { FiAlertCircle } from "react-icons/fi";
-import Topbar from '../../components/Topbar';
+import Topbar from "../../components/Topbar";
 
 import getValidationErrors from "../../utils/getValidationsErrors";
+
+import Button from "../../components/Button";
 
 import "./styles.scss";
 
@@ -64,7 +66,9 @@ const Cadastro = () => {
                     nome: Yup.string().min(3, "Nome muito curto"),
                     sobrenome: Yup.string().min(3, "Sobrenome muito curto"),
                     apelido: Yup.string().min(2, "Apelido muito curto"),
-                    email: Yup.string().lowercase().email("Digite um e-mail válido"),
+                    email: Yup.string()
+                        .lowercase()
+                        .email("Digite um e-mail válido"),
                     senha: Yup.string()
                         .matches(
                             letrasMinusculas,
@@ -191,9 +195,9 @@ const Cadastro = () => {
                         </div>
                     )}
                 </div>
-                <button
+                <Button
                     type="submit"
-                    className="Button vermelho"
+                    color="vermelho"
                     disabled={
                         values.nome === "" ||
                         values.sobrenome === "" ||
@@ -204,7 +208,7 @@ const Cadastro = () => {
                     }
                 >
                     Cadastrar
-                </button>
+                </Button>
             </form>
         </div>
     );

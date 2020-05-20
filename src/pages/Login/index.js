@@ -9,6 +9,8 @@ import api from "../../services/api";
 import loaderImg from "../../assets/loader.svg";
 import logoBranco from "../../assets/logoComunaBranco.png";
 
+import Button from "../../components/Button";
+
 function initialValues() {
     return { email: "", password: "" };
 }
@@ -98,17 +100,18 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="divBtns">
-                        <button type="submit" className="Button vermelho">
+                        <Button type="submit" color="vermelho" fontsize="20">
                             ENTRAR
-                        </button>
+                        </Button>
                         <div></div>
-                        <button
+                        <Button
                             type="submit"
-                            className="Button vinho"
+                            color="vinho"
+                            fontsize="12"
                             onClick={handleCadastrar}
                         >
                             CRIAR CONTA
-                        </button>
+                        </Button>
                         <a href="/">Esqueci minha senha</a>
                     </div>
                 </form>
