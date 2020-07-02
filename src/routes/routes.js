@@ -4,9 +4,8 @@ import StoreProvider from '../hooks/Provider';
 import { ToastProvider } from '../hooks/toast';
 import RoutesPrivate from './Private';
 
-import Area from '../pages/Areas';
+import Home from '../pages/Home';
 import Login from '../pages/Login';
-import Cadastro from '../pages/Cadastro';
 
 const Routes = () => (
     <Router>
@@ -14,8 +13,7 @@ const Routes = () => (
             <ToastProvider>
                 <Switch>
                     <Route path="/" exact component={Login} />
-                    <Route path="/cadastro" component={Cadastro} />
-                    <RoutesPrivate path="/areas" component={Area} />
+                    <RoutesPrivate path="/home" component={Home} />
                 </Switch>
             </ToastProvider>
         </StoreProvider>

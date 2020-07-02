@@ -6,8 +6,8 @@ import "./styles.scss";
 
 import api from "../../services/api";
 
-import loaderImg from "../../assets/loader.svg";
-import logoBranco from "../../assets/logoComunaBranco.png";
+import waveImg from "../../assets/wave.png";
+import bgLoginImg from "../../assets/bg.svg";
 
 import Button from "../../components/Button";
 
@@ -57,64 +57,44 @@ const Login = () => {
                 });
             });
     }
-
-    function handleCadastrar(e) {
-        e.preventDefault();
-        history.push("/cadastro");
-    }
-
+    
     return (
-        <div className="login-container row">
-            <div className="col s12 ladoDireito">
-                {loader ? (
-                    <div className="loaderDiv">
-                        <img src={loaderImg} alt="Loading..." />
-                    </div>
-                ) : null}
-                <img src={logoBranco} alt="Comunidade da Graça" />
-                <form onSubmit={handleOnSubmit}>
+        <div>
+            <img className="wave" src={waveImg} />
+            <div className="container">
+                <div className="img">
+                    <img src={bgLoginImg}/>
+                </div>
+                <div className="login-content"> 
+                    <form onSubmit={handleOnSubmit}>
                     <p>Login</p>
-                    <div className="row">
-                        <div className="divInputComErro">
-                            <input
-                                type="email"
-                                className="validate"
-                                placeholder="E-mail"
-                                id="emailInput"
-                                value={values.email}
-                                name="email"
-                                onChange={handleOnChange}
-                                autoFocus
-                            />
+                        <div className="row">
+                            <div className="divInputComErro">
+                                <input
+                                    type="text"
+                                    className="validate"
+                                    placeholder="Usuário"
+                                    id="userlInput"
+                                    value={values.email}
+                                    name="user"
+                                    onChange={handleOnChange}
+                                    autoFocus
+                                />
+                            </div>
+                            <div className="divInputComErro">
+                                <input
+                                    type="password"
+                                    className="validate"
+                                    placeholder="Senha"
+                                    id="senhaInput"
+                                    value={values.password}
+                                    name="password"
+                                    onChange={handleOnChange}
+                                />
+                            </div>
                         </div>
-                        <div className="divInputComErro">
-                            <input
-                                type="password"
-                                className="validate"
-                                placeholder="Senha"
-                                id="senhaInput"
-                                value={values.password}
-                                name="password"
-                                onChange={handleOnChange}
-                            />
-                        </div>
-                    </div>
-                    <div className="divBtns">
-                        <Button type="submit" color="vermelho" fontsize="20">
-                            ENTRAR
-                        </Button>
-                        <div></div>
-                        <Button
-                            type="submit"
-                            color="vinho"
-                            fontsize="12"
-                            onClick={handleCadastrar}
-                        >
-                            CRIAR CONTA
-                        </Button>
-                        <a href="/">Esqueci minha senha</a>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );
